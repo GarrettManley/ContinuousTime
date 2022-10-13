@@ -1,14 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0"
+      encoding="UTF-8" ?>
+
 <Shell
     x:Class="ContinuousTime.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:ContinuousTime"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:page="clr-namespace:ContinuousTime.Pages"
+    FlyoutBehavior="Disabled">
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        ContentTemplate="{DataTemplate page:HomePage}"
+        Route="HomePage" />
 
 </Shell>
