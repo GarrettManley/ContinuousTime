@@ -5,7 +5,7 @@ namespace ContinuousTime.ViewModels;
 public class HomeViewModel : BaseViewModel
 {
     private string _currentTime;
-
+ 
     public string CurrentTime
     {
         get => _currentTime;

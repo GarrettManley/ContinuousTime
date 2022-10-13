@@ -17,8 +17,8 @@ public class NavigationService : INavigationService
             : Shell.Current.GoToAsync(route);
     }
 
-    public Task CloseAsync()
+    public async Task CloseAsync()
     {
-        throw new NotImplementedException();
+        await Shell.Current.GoToAsync("..");
     }
 }
