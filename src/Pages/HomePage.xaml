@@ -1,12 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"
+      encoding="utf-8" ?>
 
 <base:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                xmlns:base="clr-namespace:ContinuousTime.Pages.Base"
-               BindingContext="{Binding Source={RelativeSource Self}}"
+               xmlns:viewModels="clr-namespace:ContinuousTime.ViewModels"
                x:Class="ContinuousTime.Pages.HomePage"
                Title="Home Page">
-
+    <base:BasePage.BindingContext>
+        <viewModels:HomeViewModel />
+    </base:BasePage.BindingContext>
     <ScrollView>
         <VerticalStackLayout
             Spacing="25"
@@ -16,7 +19,7 @@
             <Label
                 FontSize="64"
                 HorizontalTextAlignment="Center"
-                Text="Home Page" />
+                Text="{Binding CurrentTime}" />
 
         </VerticalStackLayout>
     </ScrollView>
