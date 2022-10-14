@@ -27,6 +27,7 @@ public static class MauiProgram
     {
         builder.Services.AddSingleton<INavigationService, NavigationService>();
         builder.Services.AddSingleton<ITimeService>(new TimeService(1000));
+        builder.Services.AddSingleton<ILocationService, LocationService>();
 
         return builder;
     }
