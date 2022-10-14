@@ -19,7 +19,7 @@ public class LocationService : ILocationService
             return _locationCache;
         }
 
-        var request = new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromSeconds(10));
+        var request = new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(10));
 
         try
         {
