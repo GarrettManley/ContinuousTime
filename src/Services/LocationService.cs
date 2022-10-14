@@ -6,16 +6,31 @@ namespace ContinuousTime.Services;
 public class LocationService : ILocationService
 {
     private bool _isCheckingLocation;
-    private Logger<LocationService> _logger = new(new LoggerFactory());
+    private Location _locationCache;
 
+    /// <summary>
+    /// Async request to update the cached Location value from the user's device GPS data.
+    /// </summary>
+    /// <returns>Device's Current <see cref="Location"/> or null if there is a pending request already on progress</returns>
     public async Task<Location> GetCurrentLocation()
     {
+        if (_isCheckingLocation)
+        {
+            return _locationCache;
+        }
+
         var request = new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromSeconds(10));
 
-        var location = await Geolocation.GetLocationAsync(request, default);
+        try
+        {
+            _isCheckingLocation = true;
+            _locationCache = await Geolocation.GetLocationAsync(request, default);
+        }
+        finally
+        {
+            _isCheckingLocation = false;
+        }
 
-        _logger.Log(LogLevel.Debug, $"Location Resolved: {location.Longitude}");
-
-        return location;
+        return _locationCache;
     }
 }

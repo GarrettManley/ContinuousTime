@@ -34,26 +34,30 @@ public class HomeViewModel : BaseViewModel
         _timeService.ClockTimer.Elapsed -= OnClockTick;
     }
 
-    private async void OnClockTick(object sender, ElapsedEventArgs e)
+    private void OnClockTick(object sender, ElapsedEventArgs e)
     {
         RaisePropertyChanged(() => CurrentTime);
+        RaisePropertyChanged(() => CurrentContinuousTime);
+        RaisePropertyChanged(() => CurrentLocation);
 
-        await UpdateCurrentLocation();
+        _ = UpdateCurrentLocation();
     }
 
     private async Task UpdateCurrentLocation()
     {
-        var location = await _locationService.GetCurrentLocation();
+        var location = await SetLocation();
         UpdateCurrentContinuousTime(location);
-        CurrentLocation = location.Latitude.ToString(CultureInfo.InvariantCulture);
+    }
 
-        RaisePropertyChanged(() => CurrentLocation);
+    private async Task<Location> SetLocation()
+    {
+        var location = await _locationService.GetCurrentLocation();
+        CurrentLocation = location.Latitude.ToString(CultureInfo.InvariantCulture);
+        return location;
     }
 
     private void UpdateCurrentContinuousTime(Location location)
     {
         CurrentContinuousTime = _timeService.GetCurrentContinuousTimeString(location);
-
-        RaisePropertyChanged(() => CurrentContinuousTime);
     }
 }
