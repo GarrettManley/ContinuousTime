@@ -5,9 +5,9 @@ namespace ContinuousTime.Services;
 
 public class NavigationService : INavigationService
 {
-    public Task InitializeAsync()
+    public async Task InitializeAsync()
     {
-        return NavigateToAsync(nameof(HomePage));
+        // return NavigateToAsync(nameof(HomePage));
     }
 
     public Task NavigateToAsync(string route, IDictionary<string, object> routeParameters = null)

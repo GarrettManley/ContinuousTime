@@ -1,11 +1,12 @@
-using ContinuousTime.Pages.Base;
+using ContinuousTime.ViewModels;
 
 namespace ContinuousTime.Pages;
 
-public partial class HomePage : BasePage
+public partial class HomePage
 {
-    public HomePage()
+    public HomePage(HomeViewModel viewModel)
     {
         InitializeComponent();
+        BindingContext = viewModel;
     }
 }

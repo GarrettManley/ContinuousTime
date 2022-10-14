@@ -3,7 +3,6 @@ using ContinuousTime.Interfaces.Pages;
 
 namespace ContinuousTime.Pages.Base;
 
-public class BasePage : ContentPage, IBasePage
+public abstract class BasePage : ContentPage, IBasePage, INotifyPropertyChanged
 {
-    
 }

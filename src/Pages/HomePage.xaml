@@ -3,13 +3,10 @@
 
 <base:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:vm="clr-namespace:ContinuousTime.ViewModels"
                xmlns:base="clr-namespace:ContinuousTime.Pages.Base"
-               xmlns:viewModels="clr-namespace:ContinuousTime.ViewModels"
                x:Class="ContinuousTime.Pages.HomePage"
-               Title="Home Page">
-    <base:BasePage.BindingContext>
-        <viewModels:HomeViewModel />
-    </base:BasePage.BindingContext>
+               Title="Home Page" x:DataType="vm:HomeViewModel">
     <ScrollView>
         <VerticalStackLayout
             Spacing="25"

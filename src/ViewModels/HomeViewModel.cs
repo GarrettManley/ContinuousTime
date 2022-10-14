@@ -1,25 +1,29 @@
+using System.Timers;
+using ContinuousTime.Interfaces.Services;
 using ContinuousTime.ViewModels.Base;
 
 namespace ContinuousTime.ViewModels;
 
 public class HomeViewModel : BaseViewModel
 {
-    private string _currentTime;
- 
-    public string CurrentTime
+    private readonly ITimeService _timeService;
+
+    public HomeViewModel(ITimeService timeService)
     {
-        get => _currentTime;
-        set
-        {
-            _currentTime = value;
-            RaisePropertyChanged(() => CurrentTime);
-        }
+        _timeService = timeService;
     }
+
+    public string CurrentTime => _timeService.GetCurrentTimeString();
 
     public override async Task Initialize()
     {
-        await base.Initialize();
+        _timeService.ClockTimer.Elapsed += OnClockTick;
 
-        CurrentTime = DateTime.Now.ToLongTimeString();
+        await base.Initialize();
+    }
+
+    private void OnClockTick(object sender, ElapsedEventArgs e)
+    {
+        RaisePropertyChanged(() => CurrentTime);
     }
 }

@@ -5,14 +5,14 @@ namespace ContinuousTime.ViewModels.Base;
 
 public abstract class BaseViewModel : BindableObject, IBaseViewModel
 {
-    protected BaseViewModel()
-    {
-        CallViewModelLifeCycle();
-    }
-
     public virtual Task Initialize()
     {
         return Task.CompletedTask;
+    }
+
+    protected BaseViewModel()
+    {
+        CallViewModelLifeCycle();
     }
 
     private void CallViewModelLifeCycle()

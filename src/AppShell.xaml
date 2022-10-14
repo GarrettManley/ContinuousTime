@@ -9,8 +9,6 @@
     FlyoutBehavior="Disabled">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate page:HomePage}"
-        Route="HomePage" />
+        ContentTemplate="{DataTemplate page:HomePage}" />
 
 </Shell>
