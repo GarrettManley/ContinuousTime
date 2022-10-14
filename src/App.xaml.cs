@@ -1,4 +1,5 @@
 ﻿using ContinuousTime.Interfaces;
+using ContinuousTime.Interfaces.Services;
 
 namespace ContinuousTime;
 

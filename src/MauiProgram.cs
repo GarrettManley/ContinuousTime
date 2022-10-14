@@ -1,5 +1,4 @@
-﻿using ContinuousTime.Interfaces;
-using ContinuousTime.Interfaces.Services;
+﻿using ContinuousTime.Interfaces.Services;
 using ContinuousTime.Pages;
 using ContinuousTime.Services;
 using ContinuousTime.ViewModels;
@@ -34,7 +33,6 @@ public static class MauiProgram
 
     private static MauiAppBuilder RegisterViews(this MauiAppBuilder builder)
     {
-        builder.Services.AddTransient<MainPage>();
         builder.Services.AddTransient<HomePage>();
 
         return builder;

@@ -13,10 +13,18 @@
             Padding="30,0"
             VerticalOptions="Center">
 
+            <Label FontSize="24"
+                   HorizontalTextAlignment="Center"
+                   Text="Current UCT timestamp:" />
+
             <Label
                 FontSize="64"
                 HorizontalTextAlignment="Center"
                 Text="{Binding CurrentTime}" />
+
+            <Label FontSize="24"
+                   HorizontalTextAlignment="Center"
+                   Text="GPS Coordinates:" />
 
         </VerticalStackLayout>
     </ScrollView>

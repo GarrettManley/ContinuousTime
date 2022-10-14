@@ -1,4 +1,4 @@
-namespace ContinuousTime.Interfaces;
+namespace ContinuousTime.Interfaces.Services;
 
 public interface INavigationService
 {
