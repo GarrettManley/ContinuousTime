@@ -52,7 +52,7 @@ public class HomeViewModel : BaseViewModel
     private async Task<Location> SetLocation()
     {
         var location = await _locationService.GetCurrentLocation();
-        CurrentLocation = location.Latitude.ToString(CultureInfo.InvariantCulture);
+        CurrentLocation = location.Longitude.ToString(CultureInfo.InvariantCulture);
         return location;
     }
 
