@@ -18,6 +18,8 @@ public class HomeViewModel : BaseViewModel
 
     public string CurrentTime => _timeService.GetCurrentTimeString();
 
+    public string CurrentContinuousTime { get; set; }
+
     public string CurrentLocation { get; set; }
 
     public override async Task Initialize()
@@ -25,6 +27,11 @@ public class HomeViewModel : BaseViewModel
         _timeService.ClockTimer.Elapsed += OnClockTick;
 
         await base.Initialize();
+    }
+
+    public override void Dispose()
+    {
+        _timeService.ClockTimer.Elapsed -= OnClockTick;
     }
 
     private async void OnClockTick(object sender, ElapsedEventArgs e)
@@ -37,9 +44,16 @@ public class HomeViewModel : BaseViewModel
     private async Task UpdateCurrentLocation()
     {
         var location = await _locationService.GetCurrentLocation();
-
+        UpdateCurrentContinuousTime(location);
         CurrentLocation = location.Latitude.ToString(CultureInfo.InvariantCulture);
 
         RaisePropertyChanged(() => CurrentLocation);
+    }
+
+    private void UpdateCurrentContinuousTime(Location location)
+    {
+        CurrentContinuousTime = _timeService.GetCurrentContinuousTimeString(location);
+
+        RaisePropertyChanged(() => CurrentContinuousTime);
     }
 }

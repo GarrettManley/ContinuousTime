@@ -16,7 +16,16 @@
             <Label
                 FontSize="24"
                 HorizontalTextAlignment="Center"
-                Text="Current UCT timestamp:" />
+                Text="Current Continuous timestamp:" />
+
+            <Label
+                FontSize="64"
+                HorizontalTextAlignment="Center"
+                Text="{Binding CurrentContinuousTime}" />
+            <Label
+                FontSize="24"
+                HorizontalTextAlignment="Center"
+                Text="Current UTC timestamp:" />
 
             <Label
                 FontSize="64"

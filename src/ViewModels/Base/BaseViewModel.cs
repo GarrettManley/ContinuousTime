@@ -3,7 +3,7 @@ using ContinuousTime.Interfaces.ViewModels;
 
 namespace ContinuousTime.ViewModels.Base;
 
-public abstract class BaseViewModel : BindableObject, IBaseViewModel
+public abstract class BaseViewModel : BindableObject, IBaseViewModel, IDisposable
 {
     public virtual Task Initialize()
     {
@@ -23,5 +23,9 @@ public abstract class BaseViewModel : BindableObject, IBaseViewModel
     protected void RaisePropertyChanged<T>(Expression<Func<T>> property)
     {
         OnPropertyChanged(property.Name);
+    }
+
+    public virtual void Dispose()
+    {
     }
 }
