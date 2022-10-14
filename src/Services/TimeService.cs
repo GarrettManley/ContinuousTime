@@ -32,10 +32,12 @@ public class TimeService : ITimeService
     /// <returns></returns>
     public DateTimeOffset GetCurrentContinuousTime(Location location)
     {
-        const double k = (24d / 360d);
-        var hours = k * location.Longitude; 
+        const double k = 24d / 360d;
+        var hours = k * location.Longitude;
+        var minutes = hours * 60;
+        var seconds = minutes * 60;
         return GetCurrentTime()
-            .AddHours((long) hours);
+            .AddSeconds(seconds);
     }
 
     public string GetCurrentContinuousTimeString(Location location)
